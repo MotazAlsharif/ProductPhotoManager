@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductPhotoManager.PhotoList"
+             Title="Photo List">
+    <VerticalStackLayout>
+        <ListView x:Name="photosList" ItemsSource="{Binding Photos}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding FilePath}" WidthRequest="100" HeightRequest="100"/>
+                            <Label Text="{Binding Annotation}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Close" Clicked="OnCloseClickedAsync"/>
+    </VerticalStackLayout>
+</ContentPage>

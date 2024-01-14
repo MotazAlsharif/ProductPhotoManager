@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductPhotoManager.MainPage"
+             Title="">
+
+    <VerticalStackLayout x:Name="mylayout">
+
+        <ListView x:Name="photosListView" ItemsSource="{Binding Photos}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding FilePath}" WidthRequest="100" HeightRequest="100"/>
+                            <Entry Text="{Binding Annotation}"/>
+                            <Button Text="Delete" Command="{Binding Path=BindingContext.DeletePhotoCommand, Source={x:Reference photosListView}}" CommandParameter="{Binding .}"/>
+                            <Button Text="Annotate" Command="{Binding Path=BindingContext.AnnotatePhotoCommand, Source={x:Reference photosListView}}" CommandParameter="{Binding .}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Take A Picture" Clicked="OnTakePhotoButtonClicked"/>
+        <Button Text="List View" Clicked="OnListClicked"/>
+    </VerticalStackLayout>
+
+</ContentPage>
